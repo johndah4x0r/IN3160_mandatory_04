@@ -2,29 +2,29 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 entity dff is 
-  port ( 
-    rst_n , mclk : in  std_ulogic;   -- Reset, Clock
-    din          : in  std_ulogic;   -- Data in
-    dout         : out std_ulogic    -- Data out
-  );      
+    port (
+        rst_n , mclk : in  std_ulogic;   -- Reset, Clock
+        din          : in  std_ulogic;   -- Data in
+        dout         : out std_ulogic    -- Data out
+    );
 end dff;
 
 
 architecture rtl of dff is 
-  -- Creating a next_<signal> is redundant here, since din can be used directly.
-  -- However, it is good practice to name register input as next_<signal>.
-  -- Register input should normally be assigned combinationally.
-  signal next_dout : std_ulogic; 
+    -- Creating a next_<signal> is redundant here, since din can be used directly.
+    -- However, it is good practice to name register input as next_<signal>.
+    -- Register input should normally be assigned combinationally.
+    signal next_dout : std_ulogic;
 begin
-  next_dout <= din;
-  P_DFF : process(mclk) is
-  begin 
-    if rising_edge(mclk) then 
-      dout <= 
-        '0' when rst_n = '0' else
-        next_dout;
-    end if;
-  end process;
+    next_dout <= din;
+    P_DFF : process(mclk) is
+        begin
+            if rising_edge(mclk) then
+                dout <=
+                    '0' when rst_n = '0' else
+                    next_dout;
+        end if;
+    end process;
 end architecture rtl;
 
 
