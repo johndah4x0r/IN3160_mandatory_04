@@ -12,7 +12,9 @@ EXTRA_ARGS +=--std=08
 
 TOPLEVEL ?= shift8
 
+SRC_DIR = $(PWD)/../src
 
+VHDL_SOURCES += $(SRC_DIR)/dff.vhd $(SRC_DIR)/shift_reg.vhd
 VHDL_SOURCES += $(PWD)/../src/$(TOPLEVEL).vhd
 
 SIM_ARGS +=--wave=$(TOPLEVEL).ghw
@@ -27,3 +29,4 @@ include $(shell cocotb-config --makefiles)/Makefile.sim
 clean::
 	-@rm -f $(TOPLEVEL)
 	-@rm -f e~$(TOPLEVEL).o
+	-@rm -f *.ghw
