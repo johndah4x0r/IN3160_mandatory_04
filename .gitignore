@@ -1,0 +1,6 @@
+/test/__pycache__/
+/test/sim_build/
+/test/*.ghw
+/test/*.o
+/test/*.xml
+
